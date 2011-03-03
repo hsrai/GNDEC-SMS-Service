@@ -1,0 +1,4 @@
+GNDEC SMS Service is an Intra-college communication system using SMS. The
+software is written in PHP and it uses The Address Book open source
+software(http://www.corvalis.net/address/) which was modified by me to meet the
+needs of the software. The SMS gateway is provided by the kannel project.
