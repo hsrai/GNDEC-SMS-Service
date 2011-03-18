@@ -213,9 +213,7 @@
 					<TD CLASS="data" WIDTH=90><CENTER><A HREF="show_sent.php"><IMG SRC="images/b-mail.gif" WIDTH=50 HEIGHT=50 ALT="" BORDER=0><BR><?php echo "Show History"; ?></A></CENTER></TD>
 				</TR>
 				<TR><TD>
-				
-				
-				
+				<TD CLASS="data" WIDTH=90><CENTER><A HREF="get_report.php"><IMG SRC="images/b-export.gif" WIDTH=50 HEIGHT=50 ALT="" BORDER=0><BR><?php echo "Get Report"; ?></A></CENTER></TD>
 				</TD></TR>					
 					
 				

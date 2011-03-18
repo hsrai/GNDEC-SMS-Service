@@ -61,7 +61,7 @@
 				}
 
 				// REDIRECT TO LIST
-				header("Location: " . FILE_LIST);
+				header("Location: list.php");
 				exit();
 				
 			}
@@ -106,7 +106,7 @@
 			if ($forceLoginScreen != 1) {
 				// ** IF THERE IS A USER LOGGED IN, THEY DON'T NEED TO BE HERE. REDIRECT TO LIST
 				if (isset($_SESSION['username']) && isset($_SESSION['usertype']) && ($_SESSION['abspath'] == dirname($_SERVER['SCRIPT_FILENAME'])) ) {
-					header("Location: " . FILE_LIST);
+					header("Location: list.php");
 					exit();
 				}
 				// ** IF AUTHENTICATION IS TURNED OFF (via config.php)
@@ -119,7 +119,7 @@
 					$_SESSION['usertype'] = "guest";
 					$_SESSION['abspath'] = dirname($_SERVER['SCRIPT_FILENAME']);
 					// REDIRECT TO LIST
-					header("Location: " . FILE_LIST);
+					header("Location: list.php");
 					exit();
 				}
 			}
