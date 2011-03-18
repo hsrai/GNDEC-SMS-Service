@@ -33,7 +33,7 @@
 			require_once('languages/' . $options->language . '.php');			
 			// PRINT MESSAGE
 			$errorMsg = $lang[MSG_LOGGED_OUT];
-			header("Location: " . FILE_INDEX); //required to force site language to override user language at sign in screen
+			header("location: index.php"); //required to force site language to override user language at sign in screen
 			break;
 
 		// ** AUTHENTICATE A USER
@@ -175,7 +175,7 @@
 
 
 echo "<br><br><br><br><br>";
-	echo "<b>Created By : <a href='http://harbhag.wordpress.com/harbhag' target='_blank'>Harbhag Singh Sohal</a></h3>";
+	echo "<b>Developed By : <a href='http://harbhag.wordpress.com/harbhag' target='_blank'>Harbhag Singh Sohal</a></h3>";
 
 ?>
 </FORM><p>

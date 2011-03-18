@@ -92,17 +92,31 @@ $result = mysql_query($sql);
 $result2 = mysql_query($sql2);
 $fullname = mysql_fetch_array($result);
 $mobileno = mysql_fetch_array($result2);
-$nos=$_POST['phone'];
-echo "<form action='insert.php' method='post'>";
-echo "Enter Number  <input type='text' name='receiver' value='".$nos."' />";
+$nos=str_replace("-","",$_POST['phone']);
+if(isset($_POST['resend'])){
+	$nos = $_POST['resend_mobile'];
+}
+
 ?>
 
 <?php
-if ($_SESSION['usertype'] == "admin")
-{?>
+echo "<form action='insert.php' method='post'>";
+echo "Enter Number  <input type='text' name='receiver' value='".$nos."' />";
+?>
 <br>
 Enter Message
 <br>
+<?php if(isset($_POST['resend'])){?>
+<textarea name="msgdata" rows="10" cols="40" onKeyDown="limitText(this.form.msgdata,this.form.countdown,140);" 
+onKeyUp="limitText(this.form.limitedtextarea,this.form.countdown,140);">
+<?php echo $_POST['resend_msgdata']; ?>
+</textarea><br>
+<font size="1">(Maximum characters: 140)<br>
+You have <input readonly type="text" name="countdown" size="3" value="140"> characters left.</font>
+<br /><br>
+<?php }
+else
+{?>
 <textarea name="msgdata" rows="10" cols="40" onKeyDown="limitText(this.form.msgdata,this.form.countdown,140);" 
 onKeyUp="limitText(this.form.limitedtextarea,this.form.countdown,140);">---
 Sender  :- <?php echo $fullname[0]; ?>
@@ -113,25 +127,7 @@ Mobile  :- <?php echo $mobileno[0]; ?>
 You have <input readonly type="text" name="countdown" size="3" value="140"> characters left.</font>
 <br /><br>
 <?php
-	}
-	elseif ($_SESSION['usertype'] == "user") {
-?>
-<br>
-Enter Message
-<br>
-<textarea name="msgdata" rows="10" cols="40" onKeyDown="limitText(this.form.msgdata,this.form.countdown,140);" 
-onKeyUp="limitText(this.form.limitedtextarea,this.form.countdown,140);">--
-Sender  :- <?php echo $fullname[0]; ?>
-
-Mobile  :- <?php echo $mobileno[0]; ?>
-
-</textarea><br>
-<font size="1">(Maximum characters: 140)<br>
-You have <input readonly type="text" name="countdown" size="3" value="140"> characters left.</font>
-<br /><br>
-<?php
-}?>
-
+} ?>
 </td></tr>
 <tr><td>
 <center><table>

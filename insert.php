@@ -136,7 +136,7 @@ if (!$con)
 
 mysql_select_db("adbook", $con);
 $msgdata = mysql_real_escape_string($_POST[msgdata]);
-$numbers=explode(",",$_POST[receiver]);
+$numbers=explode(",",str_replace("-","",$_POST[receiver]));
 $count=0;
 foreach ($numbers as $number)
 {

@@ -7,6 +7,7 @@
 	require_once(FILE_CLASSES);
 	session_start();
 	$by = $_SESSION['username'];
+	echo "<link rel='stylesheet' href='styles.css' type='text/css'>";
 
 // ** OPEN CONNECTION TO THE DATABASE **
 	$db_link = openDatabase($db_hostname, $db_username, $db_password, $db_name);
@@ -40,15 +41,22 @@ echo "<center><IMG SRC='images/title.png' WIDTH=570 HEIGHT=90 ALT='' BORDER=0></
 
 	$conn = mysql_connect($db_hostname,$db_username,$db_password);
 			mysql_select_db("adbook", $conn);
-	$sql = "SELECT receiver, mobile, msgdata, time FROM report WHERE sender = '".$username."'";
+	$sql = "SELECT receiver, mobile, msgdata, time FROM report WHERE sender = '".$username."' ORDER BY report.id DESC";
 	$result = mysql_query($sql);
 
-echo "<table border = '1px' width='100%'>
+echo "<center><form action='list.php' method='get'>
+	<input type='submit' value='Go Back' />
+	</form></center>";
+
+echo "<table id='history'>
 					<tr>
+			
 			<th>Receiver</th>
 			<th>Mobile</th>
 			<th>Message</th>
 			<th>Date/Time</th>
+			<th>Resend</th>
+			
 			</tr>";
 	
 while($row = mysql_fetch_assoc($result))
@@ -58,6 +66,12 @@ while($row = mysql_fetch_assoc($result))
   echo "<td>" . $row['mobile'] . "</td>";
   echo "<td>" . $row['msgdata'] . "</td>";
   echo "<td>" . $row['time'] . "</td>";
+  echo "<td><form action='sendsms.php' method='post'>
+  <input type='hidden' name='resend_mobile' value='".$row['mobile']."' />
+  <input type='hidden' name='resend_msgdata' value='".$row['msgdata']."' />
+  <input type='hidden' name='resend' value='resend' />
+  <input type='submit' value='Resend' /></form></td>";
+ 
   echo "</tr>";
   }
 echo "</table>";
@@ -69,23 +83,6 @@ echo "</table>";
 <html>
 <head>
 <title>Sent Messages</title>
-	<link rel="stylesheet" href="styles.css" type="text/css">
-	<style type="text/css">
-	table, td, th
-{
-border:1px solid black;}
-
-
-
-
-td{height: 50px; vertical-align: bottom; text-align:left;}
-th
-{
-background-color:black;
-color:white;
-}
-caption{caption-side:top;}
-	</style>
 	</head>
 	<body><center><form action='list.php' method='get'>
 	<input type='submit' value='Go Back' />

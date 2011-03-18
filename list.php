@@ -149,7 +149,7 @@
 	if ($_SESSION['usertype'] == "user") {
 		echo('<BR>'.$lang[WELCOME_USER_ACCESS]);
 	}
-	echo '<br><br><a href=" '.FILE_INDEX.'?mode=logout"> <font size=3>'.$lang[WELCOME_LOGOUT].'</font></a>';
+	echo '<br><br><a href="index.php?mode=logout"> <font size=3>'.$lang[WELCOME_LOGOUT].'</font></a>';
 	echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="student_search.php"> <b><font size=3>Student Search</font></b> </a>';
 	}
 
@@ -202,15 +202,21 @@
 				<TR VALIGN="middle" HEIGHT=90>
 					<TD CLASS="data" WIDTH=90><CENTER><?php echo($editLink); ?><IMG SRC="images/b-add.gif" WIDTH=50 HEIGHT=50 ALT="" BORDER=0><BR><?php echo($lang['TOOLBOX_ADD']); ?></A></CENTER></TD>
 					<TD CLASS="data" WIDTH=90><CENTER><A HREF="<?php echo(FILE_OPTIONS); ?>"><IMG SRC="images/b-options.gif" WIDTH=50 HEIGHT=50 ALT="" BORDER=0><BR><?php echo($lang['TOOLBOX_OPTIONS']); ?></A></CENTER></TD>
+					<TD CLASS="data" WIDTH=90><CENTER><A HREF="sendsms.php"><IMG SRC="images/b-mail.gif" WIDTH=50 HEIGHT=50 ALT="" BORDER=0><BR><?php echo "send SMS"; ?></A></CENTER></TD>
 				<!--	<TD CLASS="data" WIDTH=90><CENTER><A HREF="<?php echo(FILE_MAILTO."?groupid=".$list->group_id); ?>"><IMG SRC="images/b-mail.gif" WIDTH=50 HEIGHT=50 ALT="" BORDER=0><BR><?php echo($lang['TOOLBOX_MAILINGLIST']); ?></A></CENTER></TD> // --> 
 				</TR>
 				<TR VALIGN="middle" HEIGHT=90>
+				
 					<TD CLASS="data" WIDTH=90><CENTER><A HREF="<?php echo(FILE_EXPORT); ?>"><IMG SRC="images/b-export.gif" WIDTH=50 HEIGHT=50 ALT="" BORDER=0><BR><?php echo($lang['TOOLBOX_EXPORT']); ?></A></CENTER></TD>
 				<!--	<TD CLASS="data" WIDTH=90><CENTER><A HREF="<?php echo(FILE_SCRATCHPAD); ?>"><IMG SRC="images/b-scratchpad.gif" WIDTH=50 HEIGHT=50 ALT="" BORDER=0><BR><?php echo($lang['TOOLBOX_SCRATCHPAD']); ?></A></CENTER></TD> //-->
 					<TD CLASS="data" WIDTH=90><CENTER><A HREF="<?php echo(FILE_USERS); ?>"><IMG SRC="images/b-users.gif" WIDTH=50 HEIGHT=50 ALT="" BORDER=0><BR><?php echo($lang['TOOLBOX_MANAGEUSERS']); ?></A></CENTER></TD>
+					<TD CLASS="data" WIDTH=90><CENTER><A HREF="show_sent.php"><IMG SRC="images/b-mail.gif" WIDTH=50 HEIGHT=50 ALT="" BORDER=0><BR><?php echo "Show History"; ?></A></CENTER></TD>
 				</TR>
 				<TR><TD>
-				<TD CLASS="data" WIDTH=90><CENTER><A HREF="sendsms.php"><IMG SRC="images/b-mail.gif" WIDTH=50 HEIGHT=50 ALT="" BORDER=0><BR><?php echo "send SMS"; ?></A></CENTER></TD></TD></TR>					
+				
+				
+				
+				</TD></TR>					
 					
 				
 				</TABLE>
@@ -222,12 +228,13 @@
 				<TR VALIGN="middle" HEIGHT=90>
 					<TD CLASS="data" WIDTH=90><CENTER><?php echo($editLink); ?><IMG SRC="images/b-add.gif" WIDTH=50 HEIGHT=50 ALT="" BORDER=0><BR><?php echo $lang[TOOLBOX_ADD] ?></A></CENTER></TD>
 					<TD CLASS="data" WIDTH=90><CENTER><A HREF="<?php echo(FILE_USERS); ?>"><IMG SRC="images/b-users.gif" WIDTH=50 HEIGHT=50 ALT="" BORDER=0><BR><?php echo $lang[ LBL_USR_ACCT_SET] ?></A></CENTER></TD>
+					<TD CLASS="data" WIDTH=90><CENTER><A HREF="sendsms.php"><IMG SRC="images/b-mail.gif" WIDTH=50 HEIGHT=50 ALT="" BORDER=0><BR><?php echo "send SMS"; ?></A></CENTER></TD>
 					<TD CLASS="data" WIDTH=90>&nbsp;</TD>
 				</TR>
 				<TR VALIGN="middle" HEIGHT=90>
 			<!--		<TD CLASS="data" WIDTH=90><CENTER><A HREF="<?php echo(FILE_MAILTO); ?>"><IMG SRC="images/b-mail.gif" WIDTH=50 HEIGHT=50 ALT="" BORDER=0><BR><?php echo $lang[TOOLBOX_MAILINGLIST] ?></A></CENTER></TD> // -->
 					<TD CLASS="data" WIDTH=90><CENTER><A HREF="<?php echo(FILE_EXPORT); ?>"><IMG SRC="images/b-export.gif" WIDTH=50 HEIGHT=50 ALT="" BORDER=0><BR><?php echo $lang[TOOLBOX_EXPORT] ?></A></CENTER></TD>
-<TD CLASS="data" WIDTH=90><CENTER><A HREF="sendsms.php"><IMG SRC="images/b-mail.gif" WIDTH=50 HEIGHT=50 ALT="" BORDER=0><BR><?php echo "send SMS"; ?></A></CENTER></TD></TD></TR>
+<TD CLASS="data" WIDTH=90><CENTER><A HREF="show_sent.php"><IMG SRC="images/b-mail.gif" WIDTH=50 HEIGHT=50 ALT="" BORDER=0><BR><?php echo "Show History"; ?></A></CENTER></TD></TD></TR>
 
 					<TD CLASS="data" WIDTH=90>&nbsp;</TD>
 				</TR>
@@ -418,9 +425,6 @@
                <input type='button' name='uncheckall' value='Uncheck All' onclick='unchecka()' />
                <input type='submit' name='submit' value='Send SMS' onclick='sendsms(1234567654321)' />
                </form>
-		<form action='show_sent.php' method='get'>
-		<input type='submit' value='Show History' />
-		</form>
                </CENTER>
 
 <BR>
